@@ -1,6 +1,8 @@
-import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import { Link } from 'react-router-dom';
+
+
 
 type Pokemon = {
   id: number;
@@ -13,14 +15,15 @@ type Pokemon = {
 
 type PokeCardProps = {
   data: Pokemon[];
+  pages:string
 };
 
-const PokeCard: React.FC<PokeCardProps> = ({ data }) => {
+const PokeCard = ({ data,pages }:PokeCardProps) => {
   return (
     <>
       {data.map((pokemon) => (
         <div className="col-3 md-5" key={pokemon.id} style={{ marginTop: "20px", marginBottom: "20px" }}>
-          <div>
+          <Link to={`${pages}${pokemon.id}`}>
             <div style={{ height: "350px", width: "100%", background: "radial-gradient(purple, navy)", position: "relative", borderRadius: "1rem" }}>
               <div style={{ height: "300px", width: "100%", position: "absolute", top: "0" }}>
                 <img
@@ -40,7 +43,7 @@ const PokeCard: React.FC<PokeCardProps> = ({ data }) => {
                 <h3 style={{ textAlign: "center", fontFamily: "serif", color: "white", fontSize: "1.2rem" }}>{pokemon.name.toUpperCase()}</h3>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
     </>

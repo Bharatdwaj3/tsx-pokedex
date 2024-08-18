@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Special from "../helpers/Special";
+import Species from "../helpers/Species";
 
 
 type Params = {
@@ -17,6 +17,20 @@ type Type = {
   slot: number;
   type: { name: string; url: string };
 };
+type Ablities = {
+  slot: number;
+  is_hidden:boolean;
+  ability: {
+    name: string,
+    url: string,
+   };
+}
+type Moves = {
+  type: {
+    name: string,
+    url: string 
+  };
+}
 
 type Poke = {
   name: string;
@@ -25,6 +39,8 @@ type Poke = {
   species: { name: string };
   sprites: { front_default: string };
   stats: Stat[];
+  ablities:Ablities[];
+  moves:Moves[];
   types: Type[];
 };
 
@@ -71,7 +87,8 @@ const PokeDetails = () => {
               <div style={{ height: "50%", width: "100%", backgroundColor: "yellow", position: "absolute", bottom: "0"}}></div>
             </div>
           </div>*/}
-        {id && <Special id={id} />}
+        {id && <Species id={id} />}
+       {/* {id && <Species id={id} />}*/}
       </div>
     </>
   );

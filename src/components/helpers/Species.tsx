@@ -15,19 +15,27 @@ type Flavor = {
 type Genus = {
     genus: string;
     language: {
-        name: "en",
-        url: string
+        name: "en";
+        url: string;
     };
-    version: {
-        name: string,
-        url: string
-    };
-}
+};
  type Egg ={
     name: string,
         url: string,
  }
-
+ type Pal={
+    area:{
+        name:string;
+        url:string;
+    };
+ }
+type Variation = {
+    is_default:boolean
+    pokemon: {
+        name: string;
+        url: string;
+    };
+}
 type Desc = {
     id: number;
     name: string;
@@ -47,8 +55,26 @@ type Desc = {
         name: string,
         url: string,
     };
+    shape: {
+        name: string,
+        url: string,
+    };
+    evolves_from_species:{
+        name:string,
+        url:string,
+    }
     egg_groups:Egg[];
     color:string;
+    pal_park_encounters:Pal[];
+    varieties: Variation[];
+    growth_rate:{
+        name:string,
+        url:string,
+    }
+    generation:{
+        name:string,
+        url:string,
+    }
 };
 
 type Props = {
@@ -95,7 +121,8 @@ const Special = ({id}: Props) => {
                       ))}
                   </span>
                   <br />
-                  <span > Scientiific Name:   
+                  <span>
+                      Scientific Name:{" "}
                       {englishGenus.map((sci: Genus, index: number) => (
                           <span key={index}>
                               {sci.genus}
@@ -106,6 +133,28 @@ const Special = ({id}: Props) => {
 
             </div>
               <span> Habitat: {desc?.habitat.name}</span>
+              <br />
+              <span> Shape: {desc?.shape.name}</span>
+              <br />
+              <span> Growth-Rate: {desc?.growth_rate.name}</span>
+              <br />
+              <span> Generation: {desc?.generation.name}</span>
+              <br />
+              <span> Common Sight: {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
+                  <span key={index}>
+                      {eg.area.name}
+                      {index < desc.pal_park_encounters.length - 1 ? ", " : ""}
+                  </span>
+              ))}</span>
+              <br />
+              <span> Variations: {desc?.varieties.map((eg: Variation, index: number) => (
+                  <span key={index}>
+                      {eg.pokemon.name}
+                      {index < desc.varieties.length - 1 ? ", " : ""}
+                  </span>
+              ))}</span>
+              <br />
+              <span>  Pre-Evolution: {desc?.evolves_from_species?.name ?? "No pre-evolution"}</span>
               <br />
               <span> Egg Group: {desc?.egg_groups.map((eg:Egg,index:number)=>(
                     <span key={index}>

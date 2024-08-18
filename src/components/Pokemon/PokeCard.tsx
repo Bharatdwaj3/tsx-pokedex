@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 
 
 
-type Pokemon = {
+type Pokemons = {
   id: number;
   name: string;
   weight: number;
+  height: number;
   sprites: {
     front_default: string;
   };
 };
 
 type PokeCardProps = {
-  data: Pokemon[];
+  data: Pokemons[];
   pages:string
 };
 
@@ -35,8 +36,11 @@ const PokeCard = ({ data,pages }:PokeCardProps) => {
                   }}
                   alt={pokemon.name}
                 />
-                <h1 style={{ position: "absolute", left: "0", top: "21px", marginLeft: "2px" }} className="badge text-bg-warning">
+                <h1 style={{ position: "absolute", left: "0", top: "21px" }} className="badge text-bg-warning">
                   <span style={{ textAlign: "center", fontFamily: "serif", color: "black" }}>{pokemon.weight} lbs</span>
+                </h1>
+                <h1 style={{ position: "absolute", right: "0", top: "21px" }} className="badge text-bg-warning">
+                  <span style={{ textAlign: "center", fontFamily: "serif", color: "black" }}>{pokemon.height} ft</span>
                 </h1>
               </div>
               <div style={{ height: "50px", width: "100%", position: "absolute", bottom: "0", background: "gray", borderBottomRightRadius: "1rem", borderBottomLeftRadius: "1rem" }}>

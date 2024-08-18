@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Encounter from "../helpers/Encounter";
+import Special from "../helpers/Special";
+
 
 type Params = {
   id: string;
@@ -51,119 +52,26 @@ const PokeDetails = () => {
   return (
     <>
       <div>
-        <div>
-          <div>
-            <div
-              style={{ height: "900px", width: "100%", marginBottom: "50px" }}
-            >
-              <div
-                style={{
-                  margin: "50px",
-                  height: "900px",
-                  width: "full",
-                  background: "radial-gradient(blue, gray)",
-                  position: "relative",
-                }}
-              >
-                <div
-                  style={{
-                    height: "50%",
-                    width: "290px",
-                    position: "absolute",
-                    borderRadius: "8px",
-                    left: "0",
-                  }}
-                >
-                  <img
-                    src={PokeDetail.sprites.front_default}
-                    style={{
-                      objectFit: "contain",
-                      borderRadius: "1.5rem",
-                      width: "100%",
-                      height: "300px",
-                    }}
-                    alt={PokeDetail.name.toUpperCase()}
-                  />
-                </div>
-                <div
-                  style={{
-                    height: "100%",
-                    marginRight: "35px",
-                    width: "890px",
-                    position: "absolute",
-                    right: "0",
-                  }}
-                >
-                  <div
-                    style={{
-                      height: "50%",
-                      marginRight: "35px",
-                      width: "890px",
-                      position: "absolute",
-                      top: "0",
-                    }}
-                  >
-                    <h1
-                      style={{
-                        fontFamily: "sans",
-                        textAlign: "center",
-                        borderBottom: "4px solid black",
-                      }}
-                    >
-                      {PokeDetail.name}
-                    </h1>
-
-                    <p>
-                      <span
-                        style={{ fontFamily: "sans", fontWeight: "bolder" }}
-                      >
-                        
-                        Weight :
-                      </span>
-                      <span
-                        style={{ fontFamily: "serif", fontWeight: "lighter" }}
-                      >
-                        {PokeDetail.weight}lbs
-                      </span>
-                    </p>
-                    <p>
-                      <span
-                        style={{ fontFamily: "sans", fontWeight: "bolder" }}
-                      >
-                        
-                        Height :
-                      </span>
-                      <span
-                        style={{ fontFamily: "serif", fontWeight: "lighter" }}
-                      >
-                        {PokeDetail.height}ft
-                      </span>
-                    </p>
-                    <p>
-                      <span
-                        style={{ fontFamily: "sans", fontWeight: "bolder" }}
-                      >
-                        
-                        Types :
-                      </span>
-                      <span
-                        style={{ fontFamily: "serif", fontWeight: "lighter" }}
-                      >
-                        {PokeDetail.types.map((typo, index) => (
-                          <span key={index}>
-                            {typo.type.name}
-                            {index < PokeDetail.types.length - 1 ? ", " : ""}
-                          </span>
-                        ))}
-                      </span>
-                    </p>
+        {/*<div style={{height:"500px",width:"100%",backgroundColor:"red",position:"relative"}}>
+            <div style={{ height: "100%", width: "20%", backgroundColor: "green", position: "absolute", left: "0", marginLeft: "20px", marginRight: "20px" }}>
+              <div style={{ height: "50%", width: "100%", backgroundColor: "darkkhaki", position: "absolute", top: "0" }}>
+                  <div style={{ height: "70%", width: "100%", backgroundColor: "gray", position: "absolute", top: "0" }}>
+                    Image
+                  </div>
+                  <div style={{ height: "30%", width: "100%", backgroundColor: "bisque", position: "absolute", bottom: "0" }}>
+                    Image Title
                   </div>
                 </div>
-              </div>
+              <div style={{ height: "50%", width: "100%", backgroundColor: "darkcyan", position: "absolute", bottom: "0" }}></div>
             </div>
-          </div>
-        </div>
-        {id && <Encounter id={id}  />}
+            <div style={{ height: "100%", width: "80%", backgroundColor: "blue", position: "absolute", right: "0", marginLeft: "20px", marginRight: "20px" }}>
+              <div style={{ height: "50%", width: "100%", backgroundColor: "orange", position: "absolute", top: "0"}}>
+                Descrition
+              </div>
+              <div style={{ height: "50%", width: "100%", backgroundColor: "yellow", position: "absolute", bottom: "0"}}></div>
+            </div>
+          </div>*/}
+        {id && <Special id={id} />}
       </div>
     </>
   );

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import PokeCard from './PokeCard';
+import PokeCard from "./PokeCard";
 
 type PokemonSprites = {
   front_default: string;
@@ -13,6 +13,7 @@ type Pokemon = {
   name: string;
   weight: number;
   sprites: PokemonSprites;
+  height: number;
 };
 
 type Data = {
@@ -26,7 +27,9 @@ const PokeDisplay = () => {
   useEffect(() => {
     const getPokemon = async () => {
       try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=24");
+        const response = await axios.get(
+          "https://pokeapi.co/api/v2/pokemon?limit=24"
+        );
         const resultant: Data[] = response.data.results; // Get the request from the root API
 
         const urls = resultant.map((item: Data) => item.url); // Collect all the URLs
@@ -49,13 +52,13 @@ const PokeDisplay = () => {
       <div className="container">
         <div className="row">
           <div className="col-12">
-        <div className="row">
-              <PokeCard data={data}
-               pages="/"               
-              />
+            <div className="row">
+              <PokeCard data={data} pages="/" />
             </div>
-            </div></div></div>
+          </div>
+        </div>
       </div>
+    </div>
   );
 };
 

@@ -108,20 +108,25 @@ const Special = ({id}: Props) => {
   return (
     <>
         <div>
-            <div> Base Happiness : {desc.base_happiness} </div>
-            <div> Caputure Rate : {desc.capture_rate} </div>
-            <div>
-                <br />
-                  <span > Descritption: 
-                      {englishFlavors.map((flavor: Flavor, index: number) => (
-                          <span key={index}>
-                              {flavor.flavor_text}
-                              {index < englishFlavors.length - 1 ? ", " : ""}
-                          </span>
-                      ))}
-                  </span>
-                  <br />
-                  <span>
+            <div style={{ height: "1200px", width: "100%", backgroundColor: "red", position: "relative" }}>
+                  <div style={{ height: "50%", width: "100%", backgroundColor: "blue", position: "absolute", top:"0" }}>
+                      <div style={{ height: "100%", width: "50%", backgroundColor: "brown", position: "absolute", left: "0" }}>
+                        <div style={{marginLeft:"30px",height:"100%",width:"90%",backgroundColor:"gray"}}>
+                              <div> Base Happiness : {desc.base_happiness} </div>
+                              <div> Caputure Rate : {desc.capture_rate} </div>
+                              <span> Habitat: {desc?.habitat.name}</span>
+                              <br />
+                              <span> Shape: {desc?.shape.name}</span>
+                              <br />
+                              <span> Growth-Rate: {desc?.growth_rate.name}</span>
+                              <br />
+                              <span> Generation: {desc?.generation.name}</span>
+                              <br />
+                        </div>
+                      </div>
+                      <div style={{ height: "100%", width: "50%", backgroundColor: "purple", position: "absolute", right: "0" }}>
+                              <div style={{ marginLeft: "30px", height: "100%", width: "90%", backgroundColor: "gray" }}>
+                                <span>
                       Scientific Name:{" "}
                       {englishGenus.map((sci: Genus, index: number) => (
                           <span key={index}>
@@ -130,38 +135,47 @@ const Special = ({id}: Props) => {
                           </span>
                       ))}
                   </span>
-
+                  <br />
+                              <span> Common Sight: {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
+                                  <span key={index}>
+                                      {eg.area.name}
+                                      {index < desc.pal_park_encounters.length - 1 ? ", " : ""}
+                                  </span>
+                              ))}
+                              </span>
+                              <br />
+                              <span> Variations: {desc?.varieties.map((eg: Variation, index: number) => (
+                                  <span key={index}>
+                                      {eg.pokemon.name}
+                                      {index < desc.varieties.length - 1 ? ", " : ""}
+                                  </span>
+                              ))}</span>
+                              <br />
+                              <span>  Pre-Evolution: {desc?.evolves_from_species?.name ?? "No pre-evolution"}</span>
+                              <br />
+                              <span> Egg Group: {desc?.egg_groups.map((eg: Egg, index: number) => (
+                                  <span key={index}>
+                                      {eg.name}
+                                      {index < desc.egg_groups.length - 1 ? ", " : ""}
+                                  </span>
+                              ))}</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div style={{ height: "50%", width: "100%", backgroundColor: "green", position: "absolute", bottom: "0" }}>
+                      <div> Descritption:</div>
+                      <span >
+                          {englishFlavors.map((flavor: Flavor, index: number) => (
+                              <span key={index}>
+                                  {flavor.flavor_text}
+                                  {index < englishFlavors.length - 1 ? ", " : ""}
+                              </span>
+                          ))}
+                      </span>
+                      <br />
+                  </div>
             </div>
-              <span> Habitat: {desc?.habitat.name}</span>
-              <br />
-              <span> Shape: {desc?.shape.name}</span>
-              <br />
-              <span> Growth-Rate: {desc?.growth_rate.name}</span>
-              <br />
-              <span> Generation: {desc?.generation.name}</span>
-              <br />
-              <span> Common Sight: {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
-                  <span key={index}>
-                      {eg.area.name}
-                      {index < desc.pal_park_encounters.length - 1 ? ", " : ""}
-                  </span>
-              ))}</span>
-              <br />
-              <span> Variations: {desc?.varieties.map((eg: Variation, index: number) => (
-                  <span key={index}>
-                      {eg.pokemon.name}
-                      {index < desc.varieties.length - 1 ? ", " : ""}
-                  </span>
-              ))}</span>
-              <br />
-              <span>  Pre-Evolution: {desc?.evolves_from_species?.name ?? "No pre-evolution"}</span>
-              <br />
-              <span> Egg Group: {desc?.egg_groups.map((eg:Egg,index:number)=>(
-                    <span key={index}>
-                        {eg.name}
-                      {index < desc.egg_groups.length - 1 ? ", " : ""}
-                    </span>
-              ))}</span>
+              
         </div>
     </>
   )

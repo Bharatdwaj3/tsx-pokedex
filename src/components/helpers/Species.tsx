@@ -108,73 +108,79 @@ const Special = ({id}: Props) => {
   return (
     <>
         <div>
-            <div style={{ height: "1200px", width: "100%", backgroundColor: "red", position: "relative" }}>
-                  <div style={{ height: "50%", width: "100%", backgroundColor: "blue", position: "absolute", top:"0" }}>
-                      <div style={{ height: "100%", width: "50%", backgroundColor: "brown", position: "absolute", left: "0" }}>
-                        <div style={{marginLeft:"30px",height:"100%",width:"90%",backgroundColor:"gray"}}>
-                              <div> Base Happiness : {desc.base_happiness} </div>
-                              <div> Caputure Rate : {desc.capture_rate} </div>
-                              <span> Habitat: {desc?.habitat.name}</span>
-                              <br />
-                              <span> Shape: {desc?.shape.name}</span>
-                              <br />
-                              <span> Growth-Rate: {desc?.growth_rate.name}</span>
-                              <br />
-                              <span> Generation: {desc?.generation.name}</span>
-                              <br />
-                        </div>
-                      </div>
-                      <div style={{ height: "100%", width: "50%", backgroundColor: "purple", position: "absolute", right: "0" }}>
-                              <div style={{ marginLeft: "30px", height: "100%", width: "90%", backgroundColor: "gray" }}>
-                                <span>
-                      Scientific Name:{" "}
-                      {englishGenus.map((sci: Genus, index: number) => (
-                          <span key={index}>
-                              {sci.genus}
-                              {index < englishGenus.length - 1 ? ", " : ""}
-                          </span>
-                      ))}
-                  </span>
-                  <br />
-                              <span> Common Sight: {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
-                                  <span key={index}>
-                                      {eg.area.name}
-                                      {index < desc.pal_park_encounters.length - 1 ? ", " : ""}
-                                  </span>
-                              ))}
+              <div style={{ height: "1200px", width: "100%", backgroundColor: "red", position: "relative", padding: "20px" }}>
+                  {/* Top Blue Section */}
+                  <div style={{ height: "50%", width: "100%", backgroundColor: "blue", position: "absolute", top: "0", display: "flex" }}>
+                      {/* Left Brown Box */}
+                      <div style={{ height: "100%", width: "50%", backgroundColor: "brown", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <div style={{ height: "90%", width: "90%", backgroundColor: "gray", padding: "20px", borderRadius: "10px" }}>
+                              <span style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+                                  <h1 style={{ marginRight: "10px" }}>Base Happiness:</h1>
+                                  <span>{desc.base_happiness}</span>
                               </span>
-                              <br />
-                              <span> Variations: {desc?.varieties.map((eg: Variation, index: number) => (
-                                  <span key={index}>
-                                      {eg.pokemon.name}
-                                      {index < desc.varieties.length - 1 ? ", " : ""}
-                                  </span>
-                              ))}</span>
-                              <br />
-                              <span>  Pre-Evolution: {desc?.evolves_from_species?.name ?? "No pre-evolution"}</span>
-                              <br />
-                              <span> Egg Group: {desc?.egg_groups.map((eg: Egg, index: number) => (
-                                  <span key={index}>
-                                      {eg.name}
-                                      {index < desc.egg_groups.length - 1 ? ", " : ""}
-                                  </span>
-                              ))}</span>
+                              <div style={{ marginBottom: "10px" }}>Capture Rate: {desc.capture_rate}</div>
+                              <span style={{ display: "block", marginBottom: "10px" }}>Habitat: {desc?.habitat?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>Shape: {desc?.shape?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>Growth Rate: {desc?.growth_rate?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>Generation: {desc?.generation?.name}</span>
+                          </div>
+                      </div>
+
+                      {/* Right Purple Box */}
+                      <div style={{ height: "100%", width: "50%", backgroundColor: "purple", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <div style={{ height: "90%", width: "90%", backgroundColor: "gray", padding: "20px", borderRadius: "10px" }}>
+                              <span style={{ display: "block", marginBottom: "10px" }}>
+                                  <strong>Scientific Name:</strong> {englishGenus.map((sci: Genus, index: number) => (
+                                      <span key={index}>
+                                          {sci.genus}{index < englishGenus.length - 1 ? ", " : ""}
+                                      </span>
+                                  ))}
+                              </span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>
+                                  <strong>Common Sight:</strong> {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
+                                      <span key={index}>
+                                          {eg.area.name}{index < desc.pal_park_encounters.length - 1 ? ", " : ""}
+                                      </span>
+                                  ))}
+                              </span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>
+                                  <strong>Variations:</strong> {desc?.varieties.map((eg: Variation, index: number) => (
+                                      <span key={index}>
+                                          {eg.pokemon.name}{index < desc.varieties.length - 1 ? ", " : ""}
+                                      </span>
+                                  ))}
+                              </span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>
+                                  <strong>Pre-Evolution:</strong> {desc?.evolves_from_species?.name ?? "No pre-evolution"}
+                              </span>
+                              <span style={{ display: "block", marginBottom: "10px" }}>
+                                  <strong>Egg Group:</strong> {desc?.egg_groups.map((eg: Egg, index: number) => (
+                                      <span key={index}>
+                                          {eg.name}{index < desc.egg_groups.length - 1 ? ", " : ""}
+                                      </span>
+                                  ))}
+                              </span>
                           </div>
                       </div>
                   </div>
-                  <div style={{ height: "50%", width: "100%", backgroundColor: "green", position: "absolute", bottom: "0" }}>
-                      <div> Descritption:</div>
-                      <span >
-                          {englishFlavors.map((flavor: Flavor, index: number) => (
-                              <span key={index}>
-                                  {flavor.flavor_text}
-                                  {index < englishFlavors.length - 1 ? ", " : ""}
-                              </span>
-                          ))}
-                      </span>
-                      <br />
+
+                  {/* Bottom Green Section */}
+                  <div style={{ height: "50%", width: "100%", backgroundColor: "green", position: "absolute", bottom: "0", padding: "20px" }}>
+                      <div style={{ height: "10%", width: "100%", backgroundColor: "orange", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <h1 style={{ margin: "0" }}>Description:</h1>
+                      </div>
+                      <div style={{ height: "80%", width: "90%", marginLeft: "5%", marginTop: "20px",backgroundColor:"white", padding: "20px", borderRadius: "10px", overflowY: "auto" }}>
+                          <span>
+                              {englishFlavors.map((flavor: Flavor, index: number) => (
+                                  <span key={index}>
+                                      {flavor.flavor_text}{index < englishFlavors.length - 1 ? ", " : ""}
+                                  </span>
+                              ))}
+                          </span>
+                      </div>
                   </div>
-            </div>
+              </div>
+
               
         </div>
     </>

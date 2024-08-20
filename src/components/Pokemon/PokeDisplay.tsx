@@ -36,7 +36,7 @@ const PokeDisplay = () => {
         const limit = 24;
         const offset = (page - 1) * limit;
 
-        if (search) { url =` https://pokeapi.co/api/v2/pokemon/?${search}`} 
+        if (search) { url = ` https://pokeapi.co/api/v2/pokemon/${search}limit=${limit}&offset=${offset}`} 
           else
           { url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}` } 
 

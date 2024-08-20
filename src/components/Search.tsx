@@ -1,7 +1,7 @@
 type SearchProps = {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
-const Search = ({ setSearch }: SearchProps) => {
+const Search = ({ setSearch }: SearchProps ) => {
   return (
     <>
       <div>

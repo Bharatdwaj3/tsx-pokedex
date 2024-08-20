@@ -3,6 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import PokeCard from "./PokeCard";
+import {Pagination,Search} from "../index"; // Ensure correct path
 
 type PokemonSprites = {
   front_default: string;
@@ -21,44 +22,68 @@ type Data = {
   url: string;
 };
 
+type Page = number;
+
 const PokeDisplay = () => {
   const [data, setData] = useState<Pokemon[]>([]);
-
+  const [page, setPage] = useState<Page>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [search, setSearch] = useState("")
+  let url
   useEffect(() => {
     const getPokemon = async () => {
       try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=24"
-        );
-        const resultant: Data[] = response.data.results; // Get the request from the root API
+        const limit = 24;
+        const offset = (page - 1) * limit;
 
-        const urls = resultant.map((item: Data) => item.url); // Collect all the URLs
-        const requests = urls.map((url) => axios.get(url)); // Call all the URL promises
+        if (search) { url =` https://pokeapi.co/api/v2/pokemon/?${search}`} 
+          else
+          { url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}` } 
 
-        const responses = await Promise.all(requests); // Collect the responses of URL calls
-        const detailedData: Pokemon[] = responses.map((res) => res.data); // Map the new array of responses
-
-        setData(detailedData); // Set the data
+        const response = await axios.get(url);
+        const resultant: Data[] = response.data.results;
+        const urls = resultant.map((item: Data) => item.url);
+        const requests = urls.map((url) => axios.get(url));
+        const responses = await Promise.all(requests);
+        const detailedData: Pokemon[] = responses.map((res) => res.data);
+        setData(detailedData);
+        setTotalPages(Math.ceil(response.data.count / limit)); // Calculate total pages
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       }
     };
 
     getPokemon();
-  }, []);
+  }, [page,search]);
 
   return (
-    <div className="py-56">
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="row">
-              <PokeCard data={data} pages="/" />
+    <>
+      <div className="py-56">
+        <Search setSearch={setSearch} />
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div className="row">
+                <PokeCard data={data} pages="/" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <div
+        style={{
+          height: "190px",
+          background: "linear-gradient(to bottom, white, black)",
+        }}
+        className="w-100 d-flex align-items-center justify-content-center"
+      >
+        <Pagination
+          totalPages={totalPages}
+          page={page}
+          setPage={setPage}
+        />
+      </div>
+    </>
   );
 };
 

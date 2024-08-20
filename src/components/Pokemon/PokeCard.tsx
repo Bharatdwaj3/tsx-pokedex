@@ -31,8 +31,8 @@ const PokeCard = ({ data,pages }:PokeCardProps) => {
                   src={pokemon.sprites.front_default}
                   style={{
                     objectFit: "cover",
-                    height: "100%",
-                    width: "100%"
+                    height: "250px",
+                    width: "250px"
                   }}
                   alt={pokemon.name}
                 />

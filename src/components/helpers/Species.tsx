@@ -115,14 +115,14 @@ const Special = ({id}: Props) => {
                       <div style={{ height: "100%", width: "50%", backgroundColor: "brown", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <div style={{ height: "90%", width: "90%", backgroundColor: "gray", padding: "20px", borderRadius: "10px" }}>
                               <span style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-                                  <h1 style={{ marginRight: "10px" }}>Base Happiness:</h1>
+                                  <strong style={{ marginRight: "10px" }}>Base Happiness:</strong>
                                   <span>{desc.base_happiness}</span>
                               </span>
-                              <div style={{ marginBottom: "10px" }}>Capture Rate: {desc.capture_rate}</div>
-                              <span style={{ display: "block", marginBottom: "10px" }}>Habitat: {desc?.habitat?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>Shape: {desc?.shape?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>Growth Rate: {desc?.growth_rate?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>Generation: {desc?.generation?.name}</span>
+                              <div style={{ marginBottom: "10px" }}><strong>Capture Rate: </strong>{desc.capture_rate}</div>
+                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Habitat: </strong>{desc?.habitat?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Shape: </strong>{desc?.shape?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Growth Rate: </strong>{desc?.growth_rate?.name}</span>
+                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Generation: </strong>{desc?.generation?.name}</span>
                           </div>
                       </div>
 

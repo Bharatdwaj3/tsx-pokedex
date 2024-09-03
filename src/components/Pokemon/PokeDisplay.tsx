@@ -50,7 +50,7 @@ const PokeDisplay = () => {
           const detailedData: Pokemon[] = responses.map((res) => res.data);
 
           setData(detailedData);
-          setTotalPages(Math.ceil(filtered.length / limit)); // Calculate total pages for the filtered results
+          setTotalPages(Math.ceil(filtered.length / limit)); 
         } else {
           url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
           const response = await axios.get(url);

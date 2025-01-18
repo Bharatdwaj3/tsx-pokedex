@@ -63,9 +63,12 @@ const PokeDetails = () => {
   if (!PokeDetail) {
     return <div>Loading...</div>;
   }
+
+ 
+
   return (
     <>
-      <div style={{ backgroundColor: "aqua", height: "2000px", width: "1469px", position: "relative", backgroundImage:"linear-gradient(to right,red,yellow)" }}>
+      <div style={{ backgroundColor: "aqua", height: "2000px", width: "1469px", position: "relative", backgroundImage:"linear-gradient(to left,white,burlywood)" }}>
         <div style={{height: "1830px",width: "1370px",marginLeft: "50px",top: "50px",position: "absolute",}}>
           <div style={{height: "720px",width: "40%",top: 0,right: 0,position: "absolute",}}>
             <div style={{height:"290px",width:"290px",marginLeft:"90px",position:"absolute",top:"190px",	borderBottomRightRadius: "199rem",boxShadow: "2px 122px 15px rgba(0, 0, 0, 0.3)"}}>

@@ -60,7 +60,7 @@ const PokeDisplay = () => {
           const responses = await Promise.all(requests);
           const detailedData: Pokemon[] = responses.map((res) => res.data);
           setData(detailedData);
-          setTotalPages(Math.ceil(response.data.count / limit)); // Calculate total pages
+          setTotalPages(Math.ceil(response.data.count / limit)); 
         }
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);

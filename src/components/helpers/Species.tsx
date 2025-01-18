@@ -80,7 +80,7 @@ type Desc = {
 type Props = {
     id: string;
 };
-const Special = ({id}: Props) => {
+const Species = ({id}: Props) => {
 
     const [desc, setDesc] = useState<Desc | null>(null);
 
@@ -107,84 +107,101 @@ const Special = ({id}: Props) => {
     );
   return (
     <>
-        <div>
-              <div style={{ height: "1200px", width: "100%", backgroundColor: "red", position: "relative", padding: "20px" }}>
-                  {/* Top Blue Section */}
-                  <div style={{ height: "50%", width: "100%", backgroundColor: "blue", position: "absolute", top: "0", display: "flex" }}>
-                      {/* Left Brown Box */}
-                      <div style={{ height: "100%", width: "50%", backgroundColor: "brown", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <div style={{ height: "90%", width: "90%", backgroundColor: "gray", padding: "20px", borderRadius: "10px" }}>
-                              <span style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
-                                  <strong style={{ marginRight: "10px" }}>Base Happiness:</strong>
-                                  <span>{desc.base_happiness}</span>
-                              </span>
-                              <div style={{ marginBottom: "10px" }}><strong>Capture Rate: </strong>{desc.capture_rate}</div>
-                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Habitat: </strong>{desc?.habitat?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Shape: </strong>{desc?.shape?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Growth Rate: </strong>{desc?.growth_rate?.name}</span>
-                              <span style={{ display: "block", marginBottom: "10px" }}><strong>Generation: </strong>{desc?.generation?.name}</span>
-                          </div>
-                      </div>
-
-                      {/* Right Purple Box */}
-                      <div style={{ height: "100%", width: "50%", backgroundColor: "purple", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <div style={{ height: "90%", width: "90%", backgroundColor: "gray", padding: "20px", borderRadius: "10px" }}>
-                              <span style={{ display: "block", marginBottom: "10px" }}>
-                                  <strong>Scientific Name:</strong> {englishGenus.map((sci: Genus, index: number) => (
-                                      <span key={index}>
-                                          {sci.genus}{index < englishGenus.length - 1 ? ", " : ""}
-                                      </span>
-                                  ))}
-                              </span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>
-                                  <strong>Common Sight:</strong> {desc?.pal_park_encounters.map((eg: Pal, index: number) => (
-                                      <span key={index}>
-                                          {eg.area.name}{index < desc.pal_park_encounters.length - 1 ? ", " : ""}
-                                      </span>
-                                  ))}
-                              </span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>
-                                  <strong>Variations:</strong> {desc?.varieties.map((eg: Variation, index: number) => (
-                                      <span key={index}>
-                                          {eg.pokemon.name}{index < desc.varieties.length - 1 ? ", " : ""}
-                                      </span>
-                                  ))}
-                              </span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>
-                                  <strong>Pre-Evolution:</strong> {desc?.evolves_from_species?.name ?? "No pre-evolution"}
-                              </span>
-                              <span style={{ display: "block", marginBottom: "10px" }}>
-                                  <strong>Egg Group:</strong> {desc?.egg_groups.map((eg: Egg, index: number) => (
-                                      <span key={index}>
-                                          {eg.name}{index < desc.egg_groups.length - 1 ? ", " : ""}
-                                      </span>
-                                  ))}
-                              </span>
-                          </div>
-                      </div>
-                  </div>
-
-                  {/* Bottom Green Section */}
-                  <div style={{ height: "50%", width: "100%", backgroundColor: "green", position: "absolute", bottom: "0", padding: "20px" }}>
-                      <div style={{ height: "10%", width: "100%", backgroundColor: "orange", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <h1 style={{ margin: "0" }}>Description:</h1>
-                      </div>
-                      <div style={{ height: "80%", width: "90%", marginLeft: "5%", marginTop: "20px",backgroundColor:"white", padding: "20px", borderRadius: "10px", overflowY: "auto" }}>
-                          <span>
-                              {englishFlavors.map((flavor: Flavor, index: number) => (
-                                  <span key={index}>
-                                      {flavor.flavor_text}{index < englishFlavors.length - 1 ? ", " : ""}
-                                  </span>
-                              ))}
-                          </span>
-                      </div>
-                  </div>
-              </div>
-
-              
+        <div id="sect-ein"style={{height: "33.3%",width: "100%",padding: "20px",}}>
+        <div style={{fontFamily: "fantasy",fontSize: "1.5rem",fontStyle: "italic",marginBottom: "10px",}}>
+            Description:
+        </div>
+            <div style={{ fontFamily: "cursive",fontSize: "1.5rem",}}>
+                {[...new Set(englishFlavors.map((flavour: Flavor) => flavour.flavor_text)),].map((uniqueFlavour, index) => (
+                    <p key={index} style={{ fontSize: "0.9rem", margin: "5px 0" }}>
+                        {uniqueFlavour}
+                    </p>
+                ))}
+            </div>
+        </div>
+        
+        <div id="sect-zein"style={{height: "33.3%",width: "100%",backgroundColor: "red",position: "relative",}}>
+            <div style={{height:"10%",width:"100%",position:"absolute",left:"0"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Scientific Name: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {englishGenus.map((sci : Genus , index : number ) => (
+                    <span key={index}>
+                        {sci.genus}{index<englishGenus.length-1 ? "," : ""}
+                    </span>
+                  ))}
+                  </span>
+                </div>
+            </div>
+            <div style={{height:"10%",width:"100%",position:"absolute",left:"0",top:"50px"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Common Sight: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.pal_park_encounters.map((eg: Pal , index : number ) => (
+                    <span key={index}>
+                        {eg.area.name}{index<desc.pal_park_encounters.length-1 ? "," : ""}
+                    </span>
+                  ))}
+                  </span>
+                </div>
+            </div>
+            <div style={{height:"10%",width:"100%",position:"absolute",left:"0",top:"100px"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Pre-Evolution : 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.evolves_from_species?.name??"No pre-evolution"}
+                  </span>
+                </div>
+            </div>
+            <div style={{height:"10%",width:"100%",position:"absolute",left:"0",top:"150px"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Egg Group: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.egg_groups.map((eg: Egg , index : number ) => (
+                    <span key={index}>
+                        {eg.name}{index<desc.egg_groups.length-1 ? "," : ""}
+                    </span>
+                  ))}
+                  </span>
+                </div>
+            </div>
+            <div style={{height:"10%",width:"100%",position:"absolute",left:"0",top:"200px"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Variations :  
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.varieties.map((eg:Variation , index : number ) => (
+                    <span key={index}>
+                        {eg.pokemon.name}{index<desc.varieties.length-1 ? ", " : ""}
+                    </span>
+                  ))}
+                  </span>
+                </div>
+                <div style={{height:"10%",width:"100%",position:"absolute",left:"0",top:"50px"}}>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Capture Rate: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.capture_rate}
+                  </span>
+                </div>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Habitat: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.habitat?.name}
+                  </span>
+                </div>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Shape: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.shape?.name}
+                  </span>
+                </div>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Growth Rate: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.growth_rate?.name}
+                  </span>
+                </div>
+                <div style={{fontFamily:"fantasy",fontSize:"1.5rem",fontStretch:"3px",fontStyle:"italic",marginLeft:"20px",marginTop:"20px"}}>Generation: 
+                  <span style={{fontFamily:"serif",fontSize:"1.5rem",padding:"90px"}}>
+                    {desc?.generation?.name}
+                  </span>
+                </div>
+            </div>
+            </div>
         </div>
     </>
   )
 }
 
-export default Special
+export default Species
